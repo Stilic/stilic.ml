@@ -1,2 +1,3 @@
 # stilic.ml
-the official website for stilic (an human lol)
+
+legit website for a dude called stilic!!!!
