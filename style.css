@@ -1,0 +1,33 @@
+/* main styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inconsolata", monospace;
+  background-color: rgb(39, 37, 37);
+  color: white;
+}
+
+main {
+  margin-top: 10px;
+}
+
+main,
+.navbar {
+  padding: 0 0.75em 0 0.75em;
+}
+
+/* top navbar */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(43, 51, 42);
+  line-height: 0.6em;
+}
