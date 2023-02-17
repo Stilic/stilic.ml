@@ -2,18 +2,13 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Inconsolata", monospace;
+  font-family: "Chivo Mono", monospace;
   background-color: rgb(39, 37, 37);
   color: white;
 }
 
-main {
-  margin-top: 10px;
-}
-
-main,
-.navbar {
-  padding: 0 0.75em 0 0.75em;
+a {
+  color: rgb(115, 171, 255);
 }
 
 /* top navbar */
@@ -28,6 +23,15 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  line-height: 0;
+  padding: 0.4em 0.75em 0.4em 0.75em;
   background-color: rgb(43, 51, 42);
-  line-height: 0.6em;
+}
+
+/* main content */
+main {
+  max-width: 735px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3.75em;
 }
