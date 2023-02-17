@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="The official website of Stilic." />
     <title>The Stilic's Website</title>
 
     <!-- external ressources -->
@@ -16,23 +17,29 @@
     />
 
     <!-- website files -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cash/8.1.3/cash.min.js"></script>
+    <script src="/script.js"></script>
   </head>
   <body>
     <header>
       <div class="navbar">
-        <p><i>The Stilic's Website</i></p>
+        <p>
+          <i><a class="fake-link" href="/">The Stilic's Website</a></i>
+        </p>
         <p>
           <a href="/">home</a>
+          /
+          <a href="/cock">cock</a>
         </p>
       </div>
     </header>
-    <main>
-      <h1>Welcome to the Stilic's web space!</h1>
-      <p>
-        An awesome website made by his creator to learn web development and to
-        have a nice place for people to visit as well.
-      </p>
-    </main>
+    <div id="main">
+      <noscript
+        ><p align="center">
+          <b>Your browser doesn't support JavaScript.</b>
+        </p></noscript
+      >
+    </div>
   </body>
 </html>
