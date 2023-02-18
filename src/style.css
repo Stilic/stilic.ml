@@ -13,7 +13,7 @@ a {
   text-decoration: none;
 }
 header {
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   overflow: hidden;
@@ -22,12 +22,17 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  line-height: 0;
-  padding: 0.4em 0.75em 0.4em 0.75em;
+  padding: 0.65em;
   background-color: rgb(43, 51, 42);
+}
+@media only screen and (max-width: 415px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 #main {
   max-width: 750px;
-  margin: 3.75em auto 0 auto;
+  margin: 0 auto 0 auto;
   padding: 0 1.25em 0 1.25em;
 }

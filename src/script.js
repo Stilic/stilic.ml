@@ -15,15 +15,24 @@ $(() => {
         currentPage = id;
         document.title = isHome
           ? document.baseTitle
-          : id.charAt(0).toUpperCase() +
-            id.slice(1).replace("-", " ") +
-            " - " +
-            document.baseTitle;
+          : `${id.charAt(0).toUpperCase() + id.slice(1).replace("-", " ")} - ${
+              document.baseTitle
+            }`;
         contentDiv.html(req.responseText);
-        window.history.pushState(
+        window.history.replaceState(
           { html: req.responseText, title: document.title },
           document.title,
           new URL(isHome ? "" : id, document.location.origin).href
+        );
+      });
+      req.addEventListener("error", () => {
+        document.title = `${req.status} Error - ${document.baseTitle}`;
+        const html = `<h2>${req.status} Error 💀</h2><p>${req.statusText}</p>`;
+        contentDiv.html(html);
+        window.history.replaceState(
+          { html: html, title: document.title },
+          document.title,
+          new URL(id == "home" ? "" : id, document.location.origin).href
         );
       });
       req.open("GET", "/pages/" + id + ".html");
