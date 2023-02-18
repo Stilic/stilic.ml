@@ -35,7 +35,7 @@ $(() => {
           new URL(id == "home" ? "" : id, document.location.origin).href
         );
       });
-      req.open("GET", "/pages/" + id + ".html");
+      req.open("GET", "/pages/" + id + ".html", true);
       req.send();
     }
   }
