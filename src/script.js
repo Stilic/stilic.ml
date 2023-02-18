@@ -3,6 +3,11 @@ $(() => {
   const contentDiv = $("#main");
   var currentPage;
   function loadPage(id) {
+    if (!id)
+      id =
+        document.location.pathname == "/"
+          ? "home"
+          : document.location.pathname.slice(1);
     if (id != currentPage) {
       const req = new XMLHttpRequest();
       req.addEventListener("load", () => {
@@ -30,7 +35,7 @@ $(() => {
     else if (url.startsWith("/")) return url.slice(1);
     return url;
   }
-  loadPage("home");
+  loadPage();
   $(window).on("popstate", (e) => {
     if (e.state) {
       contentDiv.html(e.state.html);
