@@ -10,31 +10,36 @@ $(() => {
           : document.location.pathname.slice(1);
     if (id != currentPage) {
       const req = new XMLHttpRequest();
-      req.addEventListener("load", () => {
-        const isHome = id == "home";
-        currentPage = id;
-        document.title = isHome
-          ? document.baseTitle
-          : `${id.charAt(0).toUpperCase() + id.slice(1).replace("-", " ")} - ${
-              document.baseTitle
-            }`;
-        contentDiv.html(req.responseText);
-        window.history.replaceState(
-          { html: req.responseText, title: document.title },
-          document.title,
-          new URL(isHome ? "" : id, document.location.origin).href
-        );
-      });
-      req.addEventListener("error", () => {
-        document.title = `${req.status} Error - ${document.baseTitle}`;
-        const html = `<h2>${req.status} Error 💀</h2><p>${req.statusText}</p>`;
+      function error() {
+        document.title = `${req.status} - ${document.baseTitle}`;
+        const html = `<div align="center"><h2>${req.status} error 💀</h2><p>${req.statusText}</p></div>`;
         contentDiv.html(html);
-        window.history.replaceState(
+        window.history.pushState(
           { html: html, title: document.title },
           document.title,
           new URL(id == "home" ? "" : id, document.location.origin).href
         );
+      }
+      req.addEventListener("load", () => {
+        if (req.readyState == 4) {
+          if (req.status == 200) {
+            const isHome = id == "home";
+            currentPage = id;
+            document.title = isHome
+              ? document.baseTitle
+              : `${
+                  id.charAt(0).toUpperCase() + id.slice(1).replace("-", " ")
+                } - ${document.baseTitle}`;
+            contentDiv.html(req.responseText);
+            window.history.pushState(
+              { html: req.responseText, title: document.title },
+              document.title,
+              new URL(isHome ? "" : id, document.location.origin).href
+            );
+          } else error();
+        }
       });
+      req.addEventListener("error", error);
       req.open("GET", "/pages/" + id + ".html", true);
       req.send();
     }
